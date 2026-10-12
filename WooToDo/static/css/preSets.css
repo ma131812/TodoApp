@@ -1,0 +1,106 @@
+:root {
+    --Primery: #7b00ff;
+    --Secondery: #ffa200;
+    --Background: #f0f0f0;
+    --Background_secondery: #ffffff;
+    --Text: #000000;
+    --Text_secondery: #ffffff;
+
+    --Primery_dark: #7b00ff;
+    --Secondery_dark: #ffa200;
+    --Background_dark: #1b1a20;
+    --Background_secondery_dark: #292832;
+    --Text_dark: #fff;
+    --Text_secondery_dark: #000000;
+
+    --color1: #fff;
+    --color2: #fff;
+    --color3: #fff;
+    --color4: #fff;
+    --color5: #fff;
+}
+
+:root.dark {
+
+    --Primery: var(--Primery_dark);
+    --Secondery: var(--Secondery_dark);
+    --Background: var(--Background_dark);
+    --Background_secondery: var(--Background_secondery_dark);
+    --Text: var(--Text_dark);
+    --Text_secondery: var(--Text_secondery_dark);
+
+    --color1: #fff;
+    --color2: #fff;
+    --color3: #fff;
+    --color4: #fff;
+    --color5: #fff;
+}
+
+
+
+@font-face {
+    font-family: "Estedad" !important;
+    src: url(../fonts/Estedad-FD-Regular.ttf) !important;
+    font-weight: normal !important;
+}
+
+@font-face {
+    font-family: "Estedad" !important;
+    src: url(../fonts/Estedad-FD-Light.ttf) !important;
+    font-weight: lighter !important;
+}
+
+
+@font-face {
+    font-family: "Estedad" !important;
+    src: url(../fonts/Estedad-FD-Bold.ttf) !important;
+    font-weight: bold !important;
+}
+
+
+@font-face {
+    font-family: "Estedad" !important;
+    src: url(../fonts/Estedad-FD-Black.ttf) !important;
+    font-weight: bolder !important;
+}
+
+
+
+.display_none {
+    display: none !important;
+}
+
+* {
+    font-family: "Estedad" !important;
+    font-size: 14px;
+}
+
+button:active {
+    scale: 90%;
+    filter: brightness(90%);
+    transition: 0.1s;
+}
+
+
+button {
+    transition: 0.1s ;
+    font-weight: 600;
+
+}
+
+*::placeholder {
+    font-family: "Estedad" !important;
+    font-weight: 500 !important;
+    /* color: #; */
+}
+
+svg {
+    fill: var(--Text);
+}
+
+form{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,578 @@
+html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Background);
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    /* margin-bottom: 16px; */
+    align-items: center;
+    /* background-color: #fff; */
+    /* box-shadow: #00000020 0px 5px 15px 0px; */
+
+}
+
+header .header_box {
+    padding: 0 24px;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .avatar_more {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    gap: 8px;
+    height: 45px;
+    width: 45px;
+    border: none;
+    transition: 1.5s ease-in;
+}
+
+header .avatar_more .avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    /*8px*/
+    background-color: #84bed4;
+    transition: 0.5s;
+    z-index: 5;
+}
+
+header .avatar_more .avatar:active {
+    scale: 85%;
+    transition: 0.1s;
+}
+
+header .avatar_more:hover {
+    cursor: pointer;
+}
+
+header .avatar_more .user_name {
+    font-size: 14px;
+    font-weight: 700;
+    scale: 0%;
+    z-index: 5;
+    transition: 0.3s;
+    color: var(--Text);
+}
+
+/* header .avatar_more .user_name:active {
+    scale: 85%;
+    transition: 0.1s;
+} */
+
+/*********************************/
+
+.avatar_drop_menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 0px;
+    height: 0px;
+    left: -8px;
+    top: -8px;
+    padding: 0px;
+    background-color: var(--Background);
+    border-radius: 8px;
+    z-index: 4;
+    transition: 0.3s;
+    transition-delay: 0.2s;
+    overflow: hidden;
+    box-shadow: #00000040 0px 5px 15px 0px;
+
+}
+
+.avatar_drop_menu * {
+    font-size: 0 !important;
+    left: 0px;
+    top: 0px;
+    color: var(--Background_secondery);
+    transition-delay: 0.2s;
+    z-index: 4;
+}
+
+.avatar_drop_menu button {
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    /* scale: 100%; */
+}
+
+.log_out {
+    color: #ff0000 !important;
+}
+
+
+header .avatar_more:focus>.avatar_drop_menu {
+    padding: 8px;
+    padding-top: 64px;
+    background-color: var(--Background_secondery);
+    width: 180px;
+    height: 80px;
+    transition: 0.3s;
+}
+
+header .avatar_more:focus>.user_name {
+    scale: 100%;
+    transition-delay: 0.1s !important;
+    transition: 0.3s;
+}
+
+header .avatar_more:focus {
+    width: 180px;
+    transition: 0s;
+}
+
+
+
+header .avatar_more:focus>.avatar_drop_menu * {
+    scale: 100%;
+    font-size: 14px !important;
+    color: var(--Text);
+    transition: 0.3s;
+}
+
+header .avatar_more button:active {
+    scale: 90%;
+    font-size: 14px !important;
+    color: var(--Text);
+    transition: 0.1s;
+}
+
+/****************************************/
+
+header .logo_more {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: max-content;
+    height: 35px;
+    border: none;
+    transition: 0.3s;
+}
+
+header .logo_more .title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--Primery);
+    transition: 0.5s;
+    z-index: 5;
+}
+
+header .logo_more img {
+    width: 35px;
+    height: 35px;
+    transition: 0.5s;
+    z-index: 5;
+
+}
+
+header .logo_more .title:active {
+    scale: 85%;
+    transition: 0.1s;
+}
+
+header .logo_more img:active {
+    scale: 85%;
+    transition: 0.1s;
+}
+
+header .logo_more:hover {
+    cursor: pointer;
+}
+
+.drop_menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 0px;
+    height: 0px;
+    right: -8px;
+    top: -8px;
+    padding: 0px;
+    background-color: var(--Background);
+    border-radius: 8px;
+    z-index: 4;
+    transition: 0.3s;
+    transition-delay: 0.2s;
+    overflow: hidden;
+    box-shadow: #00000040 0px 5px 15px 0px;
+
+}
+
+.drop_menu * {
+    font-size: 0 !important;
+    right: 0px;
+    top: 0px;
+    color: var(--Background_secondery);
+    transition-delay: 0.2s;
+}
+
+.drop_menu button {
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    scale: 100%;
+}
+
+
+header .logo_more:focus>.drop_menu {
+    padding: 8px;
+    padding-top: 56px;
+    background-color: var(--Background_secondery);
+    width: 130px;
+    height: 150px;
+    transition: 0.3s;
+}
+
+header .logo_more:focus>.drop_menu * {
+    scale: 100%;
+    font-size: 14px !important;
+    color: var(--Text);
+    transition: 0.3s;
+}
+
+header .logo_more button:active {
+    scale: 90%;
+    font-size: 14px !important;
+    color: var(--Text);
+    transition: 0.1s;
+}
+
+.space_line {
+    width: 90%;
+    margin: 0 auto;
+    height: 0;
+    border-bottom: 2px solid var(--Background);
+}
+
+
+footer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    bottom: 0px;
+    width: 100%;
+    height: 150px;
+    background-image: linear-gradient(0deg, var(--Background) 50%, #ffffff00 100%);
+    /* background-color: var(--Background); */
+
+}
+
+footer .f_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+    padding: 0 24px;
+    gap: 10px;
+    margin-top: 80px;
+}
+
+footer .search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100% - 125px);
+    height: 42px;
+    gap: 4px;
+    border-radius: 8px;
+    border: 2px solid var(--Primery);
+    background-color: var(--Background);
+    color: var(--Text);
+    transition: 0.1s !important;
+}
+
+footer .search:active {
+    scale: 98%;
+    transition: 0.1s;
+}
+
+
+footer .search input {
+    border: none;
+    background-color: var(--Background);
+    border-radius: 8px;
+    padding: 0 16px;
+    width: calc(100% - 35px);
+    height: 100%;
+    color: var(--Text);
+}
+
+footer .search button {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    background-color: var(--Background);
+}
+
+footer .addTask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 125px;
+    height: 45px;
+    border-radius: 8px;
+    border: none;
+    /* padding: 8px 16px; */
+    background-color: var(--Primery);
+    color: #ffffff;
+}
+
+footer .addTask div {
+    display: flex;
+    gap: 4px;
+}
+
+
+main {
+    padding: 16px 24px 150px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+    background-color: var(--Background);
+    /* filter: brightness(50%); */
+}
+
+.task_box {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+    z-index: 0;
+}
+
+.Task {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+    border-radius: 8px;
+    padding: 16px 16px;
+    background-color: var(--Background_secondery);
+    transition: 0.3s;
+    transition-delay: 0.1s;
+    right: 0px;
+    z-index: 1;
+    box-shadow: #00000020 0px 0px 15px 0px;
+    color: var(--Text);
+
+}
+
+.Task:hover {
+    cursor: pointer;
+}
+
+
+.Task:focus {
+    right: -120px;
+    transition: 0.3s;
+    filter: blur(2px);
+
+}
+
+
+.Task_head {
+    padding: 0 8px;
+    width: max-content;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.Task .subject {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 8px;
+
+}
+
+.Task .content {
+    padding: 0 8px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    opacity: 50%;
+}
+
+.Task .checkbox {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    /* border-radius: ; */
+    transition: 0.1s;
+}
+
+.Task .checkbox:hover {
+    cursor: pointer;
+    scale: 110%;
+    transition: 0.1s;
+}
+
+.Task .checkbox:active {
+    cursor: pointer;
+    scale: 120%;
+    transition: 0.1s;
+}
+
+.task_box .opt_btn {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    /* justify-self: center;
+    align-self: center; */
+    gap: 10px;
+    width: max-content;
+    height: 40px;
+    left: 0px;
+    /* margin-top: calc(50% - 20px); */
+    transition: 0.3s;
+    z-index: 0;
+}
+
+.task_box .opt_btn .edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--Background_secondery);
+    border-radius: 100%;
+    transition: 0.3s;
+    border: none;
+    color: var(--Text_secondery);
+    font-size: 18px;
+    box-shadow: #00000020 0px 0px 15px 0px;
+
+}
+
+.task_box .opt_btn .remove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #ff0000;
+    border-radius: 100%;
+    transition: 0.3s;
+    border: none;
+    color: var(--Text_secondery);
+    font-size: 18px;
+    box-shadow: #00000020 0px 0px 15px 0px;
+
+}
+
+
+.task_box .remove:hover,
+.task_box .edit:hover {
+    cursor: pointer;
+}
+
+.edit_box {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: var(--Background);
+    padding: 16px 0;
+    z-index: 99999;
+    border-radius: 8px 8px 0 0;
+    box-shadow: #00000040 0px -5px 15px 0px;
+
+}
+
+.edit_box>* {
+    margin: 8px 16px;
+}
+
+.edit_box input {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--Text);
+}
+
+.edit_box input::placeholder {
+    font-size: 18px;
+    font-weight: 700 !important;
+}
+
+.edit_box textarea {
+    background: none;
+    height: 100px;
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid #acacac;
+    resize: none;
+    color: var(--Text);
+
+}
+
+.edit_buttons_box {
+    display: flex;
+    gap: 8px;
+}
+
+.edit_buttons_box button:first-child {
+    width: max-content;
+    background-color: var(--Primery);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    justify-self: flex-start;
+    align-self: flex-start;
+    color: #ffffff;
+    font-weight: 500;
+
+}
+
+.edit_buttons_box button:last-child {
+    width: max-content;
+    background-color: #9b9b9b60;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    justify-self: flex-start;
+    align-self: flex-start;
+    color: #848484;
+    font-weight: 500;
+
+}

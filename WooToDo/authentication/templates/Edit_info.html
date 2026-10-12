@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ویرایش اطلاعات</title>
+    <link rel="shortcut icon" href={% static "images/WooTodo_logo.png" %} type="image/x-icon">
+    <link rel="stylesheet" href={% static "css/preSets.css" %}>
+    <link rel="stylesheet" href={% static "css/Edit_info.css" %}>
+</head>
+
+<body>
+    <header>
+        <div>
+            <button class="more">
+                <img src={% static "images/WooTodo_logo.png" %} alt="">
+            </button>
+            <span class="title">ویرایش اطلاعات</span>
+            <button class="back"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg></button>
+        </div>
+    </header>
+
+
+    <main>
+
+        <div class="avatar_box">
+            <img class="avatar" src={% static "images/avatar.png" %}>
+        </div>
+
+
+        <div class="input_box">
+            <label for="username">نام کاربری :</label>
+            <input id="username" type="text" required>
+        </div>
+
+        <div class="input_box">
+            <label for="email">ایمیل :</label>
+            <input id="email" type="email" required>
+        </div>
+
+        <div class="input_box">
+            <label for="pass">رمز عبور :</label>
+            <input id="pass" type="password" required>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="f_box">
+            <button class="next_step">
+                <div><span>✅</span><span>تایید</span></div>
+            </button>
+        </div>
+    </footer>
+    <script src='{% static "js/Edit_info.js" %}'></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in</title>
+    <link rel="shortcut icon" href={% static "images/WooTodo_logo.png" %} type="image/x-icon">
+    <link rel="stylesheet" href={% static "css/preSets.css" %}>
+    <link rel="stylesheet" href={% static "css/Auth.css" %}>
+</head>
+
+<body>
+
+    <main>
+
+
+        <div class="Auth_OK_box">
+            <span>➕</span>
+            <span>ثبت نام شما با موفقیت انجام شد!</span>
+        </div>
+        <form method="post" id="login_form">
+        {% csrf_token %}
+        <div class="input_box">
+            {{ form.username }}
+        </div>
+        
+        </form>
+    </main>
+
+    <footer>
+        <div class="f_box">
+            <button class="next_step" type="submit" form="login_form">
+                <div><span>😊</span><span>بزن بریم</span></div>
+            </button>
+        </div>
+    </footer>
+    <script src="{% static 'js/theme.js' %}"></script>
+</body>
+
+</html>

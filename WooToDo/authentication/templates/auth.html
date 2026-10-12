@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in</title>
+    <link rel="shortcut icon" href='{% static "images/WooTodo_logo.png" %}' type="image/x-icon">
+    <link rel="stylesheet" href='{% static "css/Auth.css" %}'>
+    <link rel="stylesheet" href='{% static "css/preSets.css" %}'>
+</head>
+
+<body>
+    
+    <main>
+        <form method="post" id="login_form">
+            {% csrf_token %}
+        <div class="title_box">
+            <img src='{% static "images/WooTodo_logo_wide.png" %}' alt="">
+            <span>ورود / ثبت‌نام</span>
+        </div>
+
+
+        <div class="input_box">
+            <label for="email">ایمیل :</label>
+            <input id="email" name="email" type="email" required>
+        </div>
+
+        <div class="input_box">
+            <label for="pass">رمز عبور :</label>
+            <input id="pass" name="password" type="password" required>
+        </div>
+        {% if error %}
+        <div class="title_box" id="serverError">
+           invalid username or password
+        </div>
+        {% endif %}
+        
+         </form>
+    </main>
+
+    <footer>
+        <div class="f_box">
+            <button class="next_step" type="submit" >
+                <div><span>✅</span><span>تایید</span></div>
+            </button>
+        </div>
+    </footer>
+   
+    <script src='{% static "js/auth.js" %}'></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+
+</body>
+
+</html>

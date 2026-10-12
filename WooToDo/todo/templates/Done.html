@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آرشیو انجام شده ها</title>
+    <link rel="shortcut icon" href={% static "images/WooTodo_logo.png" %} type="image/x-icon">
+    <link rel="stylesheet" href={% static "css/preSets.css" %}>
+    <link rel="stylesheet" href={% static "css/Done.css" %}>
+</head>
+
+<body>
+    <header>
+        <div>
+            <button class="more">
+                <img src={% static "images/WooTodo_logo.png" %} alt="">
+            </button>
+            <span class="title">آرشیو انجام شده ها</span>
+            <button class="back"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-left</title><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg></button>
+        </div>
+    </header>
+
+
+    <main>
+        {% for task in tasks %}
+        <div class="task_box" data-task-id="{{ task.id }}">
+            <div tabindex="0" class="Task" task-id="{{task.id}}">
+                <div class="Task_head">
+                    <input class="checkbox" type="checkbox" {% if task.is_done %}checked{% endif %} data-task-id="{{ task.id }}">
+                    <p class="subject">{{task.title}}</p>
+                </div>
+                <p class="content">{{task.discription}}</p>
+            </div>
+            <div tabindex="0" class="opt_btn">
+                <button class="unarchive" data-task-id="{{ task.id }}">📤</button>
+            </div>
+        </div>
+        {% endfor %}
+    </main>
+
+
+    <footer>
+        <div class="f_box">
+            <div class="search">
+                <input type="text" placeholder="جستجو...">
+                <button>🔎</button>
+            </div>
+        </div>
+    </footer>
+
+    <!--////////////////////////////////////////-->
+    <div class="edit_box display_none">
+        <input type="text" placeholder="عنوان تسک...">
+        <textarea id="" placeholder="اگر توضیح اضافی داری می‌تونی اینجا بنویسی..."></textarea>
+        <div class="edit_buttons_box">
+            <button type="submit">✅ ذخیره</button>
+            <button type="button">❌ لغو</button>
+        </div>
+    </div>
+    <!--////////////////////////////////////////-->
+    <script src='{% static "js/Done.js" %}'></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+
+</body>
+
+</html>

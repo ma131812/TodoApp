@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وو! تودو</title>
+    <link rel="shortcut icon" href={% static "images/WooTodo_logo.png" %} type="image/x-icon">
+    <link rel="stylesheet" href={% static "css/preSets.css" %}>
+    <link rel="stylesheet" href={% static "css/Home.css" %}>
+</head>
+
+<body>
+    <header>
+        <div class="header_box">
+            <div tabindex="0" class="logo_more">
+                <img src={% static "images/WooTodo_logo.png" %} alt="">
+                <span class="title">وو! تـــودو</span>
+                <div class="drop_menu">
+                    <button class="go_done">انجام شده ها</button>
+                    <button class= "delete_all">حذف همه</button>
+                    <div class="space_line"></div>
+                    <button class="ToggleMode">حالت تاریک/روشن</button>
+                    <button class="go_developers">توسعه دهندگان</button>
+                </div>
+            </div>
+            <div tabindex="0" class="avatar_more">
+                <span class="user_name">{{user.username}}</span>
+                <img class="avatar" src={% static "images/avatar.png" %}>
+                <div class="avatar_drop_menu">
+                    <div class="space_line"></div>
+
+                    <button class="edit_info">ویرایش پروفایل</button>
+                    <button class="log_out">خروج از حساب</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+        {% if tasks %}
+        {% for task in tasks %}
+        <div class="task_box" data-task-id="{{ task.id }}">
+            <div tabindex="0" class="Task" task-id="{{task.id}}">
+                <div class="Task_head">
+                    <input class="checkbox" type="checkbox" {% if task.is_done %}checked{% endif %} data-task-id="{{ task.id }}">
+                    <p class="subject">{{task.title}}</p>
+                </div>
+                <p class="content">{{task.discription}}</p>
+            </div>
+            <div tabindex="0" class="opt_btn">
+                <button class="edit" data-task-id="{{ task.id }}">✏️</button>
+                <button class="remove" data-task-id="{{ task.id }}">🗑️</button>
+            </div>
+        </div>
+        {% endfor %}
+        {% else  %}
+        <div class="task_box" data-task-id="{{ task.id }}">
+            <div tabindex="0" class="Task" task-id="{{task.id}}">
+                <div class="Task_head">
+                    <p class="subject">تسکی برای انجام دادن نیست</p>
+                </div>
+            </div>
+
+        </div>
+        {% endif %}
+
+    </main>
+
+
+    <footer>
+        <div class="f_box">
+            <button class="addTask" id="addTaskBtn">
+                <div><span>➕</span><span>افزودن تسک</span></div>
+            </button>
+            <div class="search">
+                <input type="text" placeholder="جستجو...">
+                <button>🔎</button>
+            </div>
+        </div>
+    </footer>
+
+    <!--////////////////////////////////////////-->
+    <div class="edit_box display_none" id="editBox">
+        <input type="text" id="taskTitle" placeholder="عنوان تسک...">
+        <textarea id="taskDescription" placeholder="اگر توضیح اضافی داری می‌تونی اینجا بنویسی..."></textarea>
+        <div class="edit_buttons_box">
+            <button type="submit" id="saveBtn">✅ ذخیره</button>
+            <button type="button" id="cancelBtn">❌ لغو</button>
+        </div>
+    </div>
+    <!--////////////////////////////////////////-->
+    <script src='{% static "js/index.js" %}'></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+</body>
+
+</html>

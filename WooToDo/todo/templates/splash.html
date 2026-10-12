@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splash</title>
+    <link rel="shortcut icon" href={% static "images/WooTodo_logo.png" %}  type="image/x-icon">
+    <link rel="stylesheet" href={% static "css/preSets.css" %} >
+    <link rel="stylesheet" href={% static "css/Splash.css" %} >
+
+</head>
+
+<body>
+
+    <main>
+
+        <div class="splash_box">
+            <img src={% static "images/WooTodo_logo_horiz.png" %}  alt="">
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="f_box">
+            <button class="splash_button">
+                <div><span>🗝️</span><span>ورود / ثبت نام با ایمیل</span></div>
+            </button>
+            <!-- <button class="splash_button" disabled>
+                <div><span>🌐</span><span>ورود با گوگل</span></div>
+            </button> -->
+        </div>
+    </footer>
+    <script src="{% static 'js/splash.js' %}"></script>   
+    <script src="{% static 'js/theme.js' %}"></script>
+</body>
+
+</html>
