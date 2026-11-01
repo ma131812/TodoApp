@@ -32,6 +32,35 @@ if [ ! -f "$PROJECT_DIR/manage.py" ]; then
 fi
 
 # ============================================
+# 1.5. انتخاب میرور pip توسط کاربر
+# ============================================
+PIP_INDEX_ARGS=()
+
+echo -e "${YELLOW}آیا می‌خواهید برای نصب پکیج‌ها از میرور (آینه) خاصی استفاده کنید؟${NC}"
+echo -e "  ${GREEN}1)${NC} بله، از میرور پیش‌فرض (بدون تغییر) استفاده کن"
+echo -e "  ${GREEN}2)${NC} بله، یک میرور دلخواه وارد می‌کنم"
+read -r -p "انتخاب شما [1/2] (پیش‌فرض: 1): " mirror_choice
+mirror_choice=${mirror_choice:-1}
+
+case "$mirror_choice" in
+    2)
+        read -r -p "آدرس میرور را وارد کنید (مثال: https://mirror.example.com/simple): " mirror_url
+        if [ -z "$mirror_url" ]; then
+            echo -e "${RED}خطا: آدرس میرور خالی است. از میرور پیش‌فرض استفاده می‌شود.${NC}"
+        else
+            PIP_INDEX_ARGS=(--index-url "$mirror_url")
+            echo -e "${GREEN}✓ میرور انتخاب شد: $mirror_url${NC}"
+        fi
+        ;;
+    1)
+        echo -e "${YELLOW}از میرور پیش‌فرض pip استفاده می‌شود.${NC}"
+        ;;
+    *)
+        echo -e "${RED}انتخاب نامعتبر. از میرور پیش‌فرض pip استفاده می‌شود.${NC}"
+        ;;
+esac
+
+# ============================================
 # 2. ساخت venv در کنار پروژه
 # ============================================
 if [ ! -d "$VENV_DIR" ]; then
@@ -53,13 +82,13 @@ echo -e "${GREEN}✓ فعال شد: $(which python)${NC}"
 # 4. آپدیت pip
 # ============================================
 echo -e "${YELLOW}آپدیت pip...${NC}"
-python -m pip install --upgrade pip --quiet
+python -m pip install --upgrade pip --quiet "${PIP_INDEX_ARGS[@]}"
 
 # ============================================
 # 5. نصب پکیج‌ها
 # ============================================
 echo -e "${YELLOW}نصب پکیج‌ها از $REQ_FILE...${NC}"
-pip install -r "$REQ_FILE"
+pip install -r "$REQ_FILE" "${PIP_INDEX_ARGS[@]}"
 echo -e "${GREEN}✓ نصب پکیج‌ها با موفقیت انجام شد.${NC}"
 
 # ============================================

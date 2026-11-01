@@ -1,14 +1,14 @@
 document.querySelector(".go_done").addEventListener("click", function(e) 
 {window.location.href = "/show_done/";});
 
-document.querySelector(".log_out").addEventListener("click", function(e) 
-{window.location.href = "/auth/logout/";});
+// document.querySelector(".log_out").addEventListener("click", function(e) 
+// {window.location.href = "/auth/logout/";});
 
 document.querySelector(".go_developers").addEventListener("click", function(e) 
 {window.location.href = "/developers/";});
 
-document.querySelector(".edit_info").addEventListener("click", function(e) 
-{window.location.href = "/auth/edit_info/";});
+// document.querySelector(".edit_info").addEventListener("click", function(e) 
+// {window.location.href = "/auth/edit_info/";});
 
 document.addEventListener("click", function (e) {
 

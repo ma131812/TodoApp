@@ -10,6 +10,12 @@ from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from . import models
 
+from authentication import models as authmodel
+
+def get_default_user():
+    user, _ = authmodel.User.objects.get_or_create(username="default")
+    return user
+
 class SplashView(TemplateView):
     template_name = "splash.html"
     @csrf_exempt
@@ -28,10 +34,11 @@ class SplashView(TemplateView):
 class DevelopersView(TemplateView):
     template_name = "developers.html"
     
-class TaskListCRUDView(LoginRequiredMixin,View):
-    login_url = "/auth/login/"
+# class TaskListCRUDView(LoginRequiredMixin,View):
+class TaskListCRUDView(View):
+    # login_url = "/auth/login/"
     def get(self,request):
-        user=request.user
+        user = get_default_user()
         tasks=models.TaskModel.objects.filter(user=user,is_done=False)
         return render(request,"index.html",{"user":user,"tasks":tasks})
         
@@ -43,7 +50,7 @@ class TaskListCRUDView(LoginRequiredMixin,View):
         models.TaskModel.objects.create(
             title=title,
             discription=description,
-            user=request.user
+            user = get_default_user()
         )
         return JsonResponse({
                     'status': 'success',
@@ -53,7 +60,7 @@ class TaskListCRUDView(LoginRequiredMixin,View):
         data = json.loads(request.body)
         task = models.TaskModel.objects.get(
             id=data["id"],
-            user=request.user
+            user = get_default_user()
         )
         if not data.get("toggle_done"):
             task.title = data["title"]
@@ -71,14 +78,14 @@ class TaskListCRUDView(LoginRequiredMixin,View):
         data=json.loads(request.body)
         delete_all = data.get('delete_all', False)
         if delete_all:
-            print(f"delete_all user:{request.user.username}")
-            tasks=models.TaskModel.objects.filter(user=request.user)
+            print(f"delete_all user:{get_default_user().username}")
+            tasks=models.TaskModel.objects.filter(user = get_default_user())
             tasks.delete()
             return JsonResponse({
                     'status': 'success',
                 }, status=200)
         id=data.get("id")
-        models.TaskModel.objects.filter(user=request.user,id=id).delete()
+        models.TaskModel.objects.filter(user = get_default_user(),id=id).delete()
         return JsonResponse({
                 'status': 'success',
             }, status=200)
@@ -87,14 +94,14 @@ class TaskListCRUDView(LoginRequiredMixin,View):
 class CompletedTaskListView(LoginRequiredMixin,View):
     login_url = "/accounts/login/"
     def get(self,request):
-        user=request.user
+        user = get_default_user()
         tasks=models.TaskModel.objects.filter(user=user,is_done=True)
         return render(request,"Done.html",{"user":user,"tasks":tasks})
     def put(self,request):
         data = json.loads(request.body)
         task = models.TaskModel.objects.get(
             id=data["id"],
-            user=request.user
+            user = get_default_user()
         )
         task.is_done = not task.is_done
         task.save()
